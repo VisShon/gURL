@@ -1,5 +1,7 @@
+// #region Imports
 import { useShortcut } from "@/hooks/useShortcut"
 import {useState} from "react"
+// #endregion
 
 function VerticalPanel() {
 
