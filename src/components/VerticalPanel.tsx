@@ -65,7 +65,10 @@ function VerticalPanel() {
 
 					<button 
 						className="absolute w-[80%] bottom-4 p-2 bg-slate-100 text-charcoal hover:shadow-md border-[1.2px] border-charcoal transition-all delay-150 active:border-blue-main ease-in-out rounded-lg"
-						onClick={()=>localStorage.clear()}
+						onClick={()=>{
+                            localStorage.clear()
+			                setLocalURLs([])
+                        }}
 					>
 						Clear
 					</button>
