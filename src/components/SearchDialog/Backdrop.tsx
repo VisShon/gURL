@@ -36,7 +36,6 @@ function Backdrop(
 			<img
 				className="absolute object-cover right-0 bottom-0 -z-10 h-full w-[40%] "
 				src="/command-search-bg.svg"
-				fetchPriority="high"
 				alt="command-search-bg"
 			/>
 

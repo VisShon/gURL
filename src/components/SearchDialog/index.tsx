@@ -109,7 +109,6 @@ function SearchDialog({open=false,users,mod}:DialogParams) {
 
 				<img
                     className="h-[3rem]"
-					fetchPriority="high"
 					src="/ltv.svg"
 					alt="search"
 				/>
@@ -121,7 +120,6 @@ function SearchDialog({open=false,users,mod}:DialogParams) {
 					
                     <img
                         className="h-[2rem]"
-					 	fetchPriority="high"
 						src="/search.svg"
 						alt="search"
 					/>

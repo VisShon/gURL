@@ -65,7 +65,7 @@ export function URLsProvider({ children }: {
 
         }
         catch(err){
-            alert(`Invalid URL: Bad Request`)
+            alert(`Invalid URL`)
         }
         
     }
@@ -78,7 +78,7 @@ export function URLsProvider({ children }: {
             _updatelocal(id)
         }
         catch(err){
-            alert(`Invalid URL: Bad Request`)
+            alert(`Invalid URL`)
         }
     }
 
