@@ -29,11 +29,23 @@ export function URLsProvider({ children }: {
                 full_url
             })
 
+            
+
             const {data,error} = await getTopURLs()
             setUrls(data)
+            
+            
 
-            if(res?.data?.short_code)
+            if(res?.data?.short_code){
+                _updatelocal({
+                    short_code:res.data.short_code,
+                    full_url:full_url
+                })
+                
                 return res?.data?.short_code
+            }
+
+
 
             alert(`An error occured ${res?.data?.errors}`)
         }
@@ -68,6 +80,19 @@ export function URLsProvider({ children }: {
         catch(err){
             alert(`An error occured ${err}`)
         }
+    }
+
+    const _updatelocal = (record:{
+        short_code: string,
+        full_url: string,
+    }) => {
+        const prev = JSON.parse(localStorage.getItem('local_urls')!)
+        localStorage.setItem('local_urls',
+            JSON.stringify([
+                ...prev,
+                record
+            ])
+        )
     }
 
     useEffect(()=>{

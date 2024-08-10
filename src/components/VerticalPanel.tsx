@@ -1,14 +1,14 @@
 import { useShortcut } from "@/hooks/useShortcut"
-import { SHORT_URL } from "@/lib/url"
-
 import {useState} from "react"
-
-
 
 function VerticalPanel() {
 
 	const [show,setShow] = useState<boolean>(false)
-	const [localURLs,setLocalURLs] = useState<SHORT_URL[]>([])
+
+	const [localURLs,setLocalURLs] = useState<{
+        short_code:string,
+        full_url:string
+    }[]>([])
 
 	useShortcut([
 		["mod+S", () => {
@@ -36,16 +36,17 @@ function VerticalPanel() {
 						{
 							localURLs?.map((url,id)=><>
                                 <button 
+                                    key={id}
                                     title= "click to copy"
                                     className="bg-white rounded-lg border-2 p-6 min-w-max flex flex-col justify-between items-center cursor-pointer  select-none relative"
                                     onClick={(e)=>{
                                         e.preventDefault()
-                                        navigator?.clipboard.writeText("http://localhost:3000/"+url?.short_code?.slice(0,10))
+                                        navigator?.clipboard.writeText("http://localhost:3000/"+url?.short_code)
                                         alert("Copied to clipboard!")
                                     }} 
                                 >
-                                    <p>{url?.title}</p>
-                                    <span>{"localhost:3000/"+url.short_code!}</span>
+                                    <p className="text-[0.8rem] font-medium text-blue-light">{url?.full_url.slice(8,20)}</p>
+                                    <span className="text-[0.7rem] text-gray-500 mt-4">{"localhost:3000/"+url.short_code?.slice(0,10)}</span>
                                 </button>
                             </>)
 						}

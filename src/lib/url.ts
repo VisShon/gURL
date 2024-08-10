@@ -3,7 +3,6 @@ import axios from "axios"
 
 export interface SHORT_URL {
 	"id":number
-	"short_code"?:string,
 	"click_count": number,
 	"full_url":string
 	"title":string
