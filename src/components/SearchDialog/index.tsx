@@ -15,18 +15,18 @@ import { URLsContext } from "../../context/URLContext"
 
 export interface DialogParams {
 	open?:boolean,
-	users:any[]
+	users:any[],
+    mod:string
 }
 
 
-function SearchDialog({open=false,users}:DialogParams) {
+function SearchDialog({open=false,users,mod}:DialogParams) {
 
 	const {create} = useContext(URLsContext)
 
 	const dialogRef = useRef<HTMLDialogElement>(null)
 	
 	const [isOpen,setIsOpen] = useState<boolean>(false)
-	const [mod,setMod] = useState<string>("Ctrl")
 
     const [fullURL, setFullURL] = useState<string>("")
     const [shortURL, setShortURL] = useState<string>("")
@@ -54,15 +54,6 @@ function SearchDialog({open=false,users}:DialogParams) {
 	})
 
 
-	useEffect(()=>{
-		if( 
-			typeof window !== "undefined" 
-			? navigator.userAgent.toUpperCase().indexOf("MAC") >= 0
-			:false
-		) setMod("⌘")
-
-	},[navigator.userAgent])
-
 
 	return (
 		<>
@@ -74,7 +65,7 @@ function SearchDialog({open=false,users}:DialogParams) {
 			>
 
                 <div
-                    className="relative flex items-center gap-2  text-grey-light font-medium mb-4 z-10 text-[1.1rem] mb-6"
+                    className="relative flex items-center gap-2  text-grey-light font-medium  z-10 text-[1.1rem] mb-6"
                 >
 
                     <input 

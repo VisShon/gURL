@@ -31,7 +31,7 @@ export default function NameCard({
                     alert("Copied to clipboard!")
                 }} 
                 title="copy to clipboard"
-                className="bg-white rounded-lg border-2 p-6 min-w-max h-[25vh] flex flex-col justify-between items-center cursor-pointer  select-none relative group"
+                className="bg-white rounded-lg border-2 p-6 w-full h-[25vh] flex flex-col justify-between items-center cursor-pointer  select-none relative group"
             >
 
                 <button 

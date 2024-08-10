@@ -8,6 +8,7 @@ import {
 
 import { getTopURLs, SHORT_URL } from "../lib/url";
 import axios from "axios";
+import { encode } from "../lib/url";
 // #endregion
 
 export const URLsContext = createContext({} as {
@@ -37,7 +38,7 @@ export function URLsProvider({ children }: {
             
 
             if(res?.data?.short_code){
-                _updatelocal({
+                _addlocal({
                     short_code:res.data.short_code,
                     full_url:full_url
                 })
@@ -45,12 +46,10 @@ export function URLsProvider({ children }: {
                 return res?.data?.short_code
             }
 
-
-
-            alert(`An error occured ${res?.data?.errors}`)
         }
         catch(err){
-            alert(`An error occured ${err}`)
+            console.log(err)
+            alert(`Invalid URL: Bad Request`)
         }
     }
 
@@ -66,7 +65,7 @@ export function URLsProvider({ children }: {
 
         }
         catch(err){
-            alert(`An error occured ${err}`)
+            alert(`Invalid URL: Bad Request`)
         }
         
     }
@@ -76,23 +75,46 @@ export function URLsProvider({ children }: {
             const res = await axios.delete(`http://localhost:3000/short_urls/${id}`)
             const {data,error} = await getTopURLs()
             setUrls(data)
+            _updatelocal(id)
         }
         catch(err){
-            alert(`An error occured ${err}`)
+            alert(`Invalid URL: Bad Request`)
         }
     }
 
-    const _updatelocal = (record:{
+    const _addlocal = (record:{
         short_code: string,
         full_url: string,
     }) => {
         const prev = JSON.parse(localStorage.getItem('local_urls')!)
-        localStorage.setItem('local_urls',
-            JSON.stringify([
-                ...prev,
-                record
-            ])
-        )
+        if (prev?.length > 0)
+            localStorage.setItem('local_urls',
+                JSON.stringify([
+                    ...prev,
+                    record
+                ])
+            )
+        else
+            localStorage.setItem('local_urls',
+                JSON.stringify([record])
+            )
+           
+    }
+
+    const _updatelocal = (id:number) => {
+        const prev = JSON.parse(localStorage.getItem('local_urls')!)
+        const short_code = encode(id)
+        if (prev?.length > 0)
+            localStorage.setItem('local_urls',
+                JSON.stringify(
+                    prev.filter((
+                        item:{
+                            short_code: string,
+                            full_url: string,
+                        }
+                    )=>item.short_code!==short_code)
+                )
+            )
     }
 
     useEffect(()=>{
