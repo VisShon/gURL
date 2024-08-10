@@ -8,14 +8,14 @@ export default function NameCard({
     id,
 	updated_at,
 	created_at,
-	short_code,
+	title,
 	full_url,
 	counter,
 }:{
 	updated_at:string|null,
 	created_at:string|null,
 	full_url:string|null,
-	short_code:string|null,
+	title:string|null,
 	counter:number|null,
 	id:number|null,
 }) {
@@ -52,7 +52,7 @@ export default function NameCard({
                 </div>
 
                 <div className="text-center mt-6">
-                    {short_code && <h2 className="text-3xl font-semibold text-gray-800">{short_code.slice(0,10)}</h2>}
+                    {title && <h2 className="text-3xl font-semibold text-gray-800">{title.slice(0,10)}</h2>}
                     {full_url && <h2 className="text-sm font-medium text-blue-light">{full_url.slice(8,30)}</h2>}
 
                     {created_at && <p className=" text-sm text-gray-500 mt-4">created on {created_at}</p>}
