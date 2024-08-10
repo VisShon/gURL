@@ -1,5 +1,5 @@
 // #region Imports
-import { useShortcut } from "@/hooks/useShortcut"
+import { useShortcut } from "../hooks/useShortcut"
 import {useState} from "react"
 // #endregion
 
@@ -13,7 +13,7 @@ function VerticalPanel() {
     }[]>([])
 
 	useShortcut([
-		["mod+S", () => {
+		["mod+U", () => {
 			setShow(true)
 			const res = JSON.parse(localStorage.getItem('local_urls')!)
 			setLocalURLs(res)

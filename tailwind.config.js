@@ -1,12 +1,9 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
-	content: [
-			"./pages/**/*.{js,ts,jsx,tsx,mdx}",
-			"./components/**/*.{js,ts,jsx,tsx,mdx}",
-			"./app/**/*.{js,ts,jsx,tsx,mdx}",
-		],
-	theme: {
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: [
+      "./src/**/*.{js,jsx,ts,tsx}",
+    ],
+    theme: {
 		extend: {
 			animation: {
 				modal: "modalAnimation 0.1s ease-in-out",
@@ -65,5 +62,4 @@ const config: Config = {
 		},
 	},
 	plugins: [],
-};
-export default config;
+  }

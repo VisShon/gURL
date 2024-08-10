@@ -1,9 +1,9 @@
 // #region Imports
-import SearchDialog from "@/components/SearchDialog"
-import { SHORT_URL } from "@/lib/url"
-import URLCard from "@/components/URLCard"
+import SearchDialog from "./components/SearchDialog"
+import { SHORT_URL } from "./lib/url"
+import URLCard from "./components/URLCard"
 import { useContext } from "react"
-import { URLsContext } from "@/context/URLContext"
+import { URLsContext } from "./context/URLContext"
 // #endregion
 
 export default function Home() {

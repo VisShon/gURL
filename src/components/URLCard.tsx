@@ -1,7 +1,7 @@
 import { FaUsers } from "react-icons/fa"
-import { encode } from "@/lib/url"
+import { encode } from "../lib/url"
 import { useContext } from "react"
-import { URLsContext } from "@/context/URLContext"
+import { URLsContext } from "../context/URLContext"
 
 
 export default function NameCard({

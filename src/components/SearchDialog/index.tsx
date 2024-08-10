@@ -1,6 +1,6 @@
 // #region Imports
-import { useShortcut } from "@/hooks/useShortcut"
-import { useMouse } from "@/hooks/useMouse"
+import { useShortcut } from "../../hooks/useShortcut"
+import { useMouse } from "../../hooks/useMouse"
 
 import { 
 	useContext, 
@@ -10,7 +10,7 @@ import {
 } from "react"
 
 import Backdrop from "./Backdrop"
-import { URLsContext } from "@/context/URLContext"
+import { URLsContext } from "../../context/URLContext"
 // #endregion
 
 export interface DialogParams {
@@ -117,6 +117,7 @@ function SearchDialog({open=false,users}:DialogParams) {
 			>
 
 				<img
+                    className="h-[3rem]"
 					fetchPriority="high"
 					src="/ltv.svg"
 					alt="search"
@@ -128,6 +129,7 @@ function SearchDialog({open=false,users}:DialogParams) {
 					className="p-3 py-1 w-[90%] flex items-center gap-2 rounded-lg bg-chalk border-[1px] active:border-[2px] active:shadow-md active:bg-white border-chalk-dark hover:border-blue-main transition-all ease-in-out delay-100">
 					
                     <img
+                        className="h-[2rem]"
 					 	fetchPriority="high"
 						src="/search.svg"
 						alt="search"
@@ -141,7 +143,7 @@ function SearchDialog({open=false,users}:DialogParams) {
 
 				<button
 					onClick={()=>setIsOpen(true)}
-					className=" font-bold font-space text-xl flex items-center gap-2 rounded-lg bg-chalk active:border-[1px] active:shadow-lg active:bg-white border-chalk-dark hover:border-blue-main transition-all ease-in-out delay-100">
+					className=" font-bold px-4 font-space text-xl flex items-center gap-2 rounded-lg bg-chalk active:border-[1px] active:shadow-lg active:bg-white border-chalk-dark hover:border-blue-main transition-all ease-in-out delay-100">
 
 					<p className="bg-concrete  px-3 border-grey-super-light border-[1px] rounded-md text-grey-dark">
 						{mod}

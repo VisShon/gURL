@@ -6,7 +6,7 @@ import {
     useEffect,
 } from "react";
 
-import { getTopURLs, SHORT_URL } from "@/lib/url";
+import { getTopURLs, SHORT_URL } from "../lib/url";
 import axios from "axios";
 // #endregion
 
@@ -41,7 +41,7 @@ export function URLsProvider({ children }: {
                     short_code:res.data.short_code,
                     full_url:full_url
                 })
-                
+
                 return res?.data?.short_code
             }
 
