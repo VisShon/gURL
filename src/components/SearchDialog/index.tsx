@@ -63,43 +63,45 @@ function SearchDialog({open=false,users,mod}:DialogParams) {
 				className="fixed w-[40em] top-32 bg-grey-dark  p-6 rounded-2xl my-16 text-chalk text-xl overflow-hidden animate-modal shadow-lg transition-all delay-150 ease-in-out z-10 h-max"
 				open={open||isOpen}
 			>
-
-                <div
-                    className="relative flex items-center gap-2  text-grey-light font-medium  z-10 text-[1.1rem] mb-6"
-                >
-
-                    <input 
-                        className=" bg-chalk border-[2px] focus:outline-none clear-none p-4 w-full rounded-lg  border-chalk-dark hover:border-blue-main transition-all ease-in-out delay-100 "
-                        value={fullURL}
-                        ref={searchElement}
-                        autoFocus
-                        onChange={(e)=>setFullURL(e.target.value.toLowerCase())}
-                        type="search"
-                        placeholder={`Try typing "http://google.com"...`}
-                    />
-                            
-                </div>
-
-				<section className="flex gap-4 justify-between  transition-all delay-200 ease-in-out ">
-		
-                    <button
-                        onClick={async()=>{
+                <form 
+                    onSubmit={
+                        async(e)=>{
+                            e.preventDefault()
                             const code = await create(fullURL)
                             if (code) setShortURL(code)
-                        }}
-                        className="p-2 px-4 w-[20%] bg-blue-main hover:bg-blue-dark rounded-lg  font-bold text-[1rem] transition-all ease-in-out delay-50"
+                        }
+                    }
+                >
+                    <div
+                        className="relative flex items-center gap-2  text-grey-light font-medium  z-10 text-[1.1rem] mb-6"
                     >
-                        Shorten
-                    </button>
 
-					<Backdrop
-                        short_url={shortURL}
-                    />
-					
-				</section>
+                        <input 
+                            className=" bg-chalk border-[2px] focus:outline-none clear-none p-4 w-full rounded-lg  border-chalk-dark hover:border-blue-main transition-all ease-in-out delay-100 "
+                            value={fullURL}
+                            ref={searchElement}
+                            autoFocus
+                            onChange={(e)=>setFullURL(e.target.value.toLowerCase())}
+                            type="search"
+                            placeholder={`Try typing "http://google.com"...`}
+                        />
+                                
+                    </div>
 
-				
-				
+                    <section className="flex gap-4 justify-between  transition-all delay-200 ease-in-out ">
+            
+                        <button
+                            className="p-2 px-4 w-[20%] bg-blue-main hover:bg-blue-dark rounded-lg  font-bold text-[1rem] transition-all ease-in-out delay-50"
+                        >
+                            Shorten
+                        </button>
+
+                        <Backdrop
+                            short_url={shortURL}
+                        />
+                        
+                    </section>
+                </form>
 			</dialog>
 
 
